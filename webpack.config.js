@@ -1,4 +1,5 @@
 var htmlWebpackPlugin = require('html-webpack-plugin');
+var path = require('path');
 module.exports = {
     entry:'./src/index.js',
     output:{
@@ -19,7 +20,18 @@ module.exports = {
     			test:/\.js$/,
     			loader:'babel',
     			exclude:/node_modules/
-    		}
+    		},
+            {
+                test:/\.css$/,
+                loader:'style!css',
+                include:path.resolve(__dirname,'src')
+            }
+            ,
+            {
+                test:/\.less$/,
+                loader:'style!css!less',
+                include:path.resolve(__dirname,'src')
+            }
     	]
     },
 
